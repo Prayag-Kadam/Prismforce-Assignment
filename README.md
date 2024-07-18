@@ -1,41 +1,56 @@
-Here’s a description for your GitHub repository for the Prismforce coding test:
+# Chakravyuha Problem Solver
 
----
+This repository contains a Python implementation of the Chakravyuha problem solver, which determines whether Abhimanyu can cross the Chakravyuha given certain initial conditions.
 
-## Prismforce Assignment
+## Problem Statement
 
-This repository contains the solution to the coding test provided by Prismforce.
+Abhimanyu needs to cross 11 circles of enemies to reach the Pandavas' army. Each circle has an enemy with a specific power. Abhimanyu can skip fighting some enemies and can recharge his power a limited number of times. Additionally, some enemies regenerate their power after a certain point.
 
-### Problem Description
+## Function Description
 
-The coding test involves solving a problem based on the famous Chakravyuha scenario from the Mahabharata. In this scenario, Abhimanyu is trapped in a formation of 11 circles guarded by enemies with varying powers. Abhimanyu must cross all the circles to reach the Pandavas' army. The solution involves determining if Abhimanyu can successfully navigate through all the circles, given certain constraints:
+The function `can_cross_chakravyuha(p, enemies, a, b)` determines whether Abhimanyu can cross all 11 circles.
 
-- Abhimanyu starts with an initial power `p`.
-- Each circle is guarded by an enemy with power `k1, k2, ..., k11`.
-- Abhimanyu can skip fighting `a` times.
-- Abhimanyu can recharge his power `b` times to its initial value `p`.
-- Enemies in circles 3 and 7 can regenerate once with half their initial power and attack Abhimanyu from behind if he is battling in the next circle.
-- Battling an enemy reduces Abhimanyu’s power by the enemy's power. If Abhimanyu's power is less than the enemy's power when he enters a circle, he loses the battle.
+### Parameters
 
-### Solution
+- `p` (int): The initial power of Abhimanyu.
+- `enemies` (list of int): A list containing the power of enemies in each of the 11 circles.
+- `a` (int): The number of times Abhimanyu can skip fighting an enemy.
+- `b` (int): The number of times Abhimanyu can recharge his power.
 
-The solution is implemented in Python. It includes a function `can_cross_chakravyuha` that takes Abhimanyu's initial power, a list of enemy powers, the number of skips, and the number of recharges as inputs, and returns a boolean indicating whether Abhimanyu can cross all circles.
+### Returns
 
-### Repository Structure
+- `bool`: Returns `True` if Abhimanyu can reach the Pandavas' army, `False` otherwise.
 
-- `main.py`: Contains the main function `can_cross_chakravyuha` and example test cases.
-- `README.md`: This readme file explaining the problem, solution, and how to run the code.
+### Logic
 
-### How to Run
+1. **Initial Setup**: Initialize the power, skips, and recharges.
+2. **Loop Through Circles**: Iterate through each circle and apply the following rules:
+   - Skip the enemy if skips are remaining.
+   - Recharge power if recharges are remaining and power is less than the enemy's power.
+   - Check if Abhimanyu's power is less than the enemy's power, and if so, return `False`.
+   - Deduct the enemy's power from Abhimanyu's power.
+   - Check for regenerating enemies and adjust power accordingly.
+3. **Final Check**: Return `True` if Abhimanyu successfully crosses all circles.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/Prismforce-Assignment.git
-   cd Prismforce-Assignment
-   ```
 
-2. Run the test case:
-   ```bash
-   python main.py
-   ```
----
+### Example Test Case 1
+
+- Initial power: 9
+- Enemies: [1, 1, 1, 2, 2, 2, 5, 5, 8, 2, 3, 1]
+- Skips: 3
+- Recharges: 2
+
+### Example Test Case 2
+
+- Initial power: 15
+- Enemies: [5, 6, 8, 7, 10, 3, 9, 6, 7, 8, 7]
+- Skips: 3
+- Recharges: 2
+
+## Running the Code
+
+To run the code, simply execute the Python script in a Python 3 environment. You can modify the test cases as needed to validate different scenarios.
+
+```sh
+python Prismforce-Assignment.py
+```

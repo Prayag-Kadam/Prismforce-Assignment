@@ -1,3 +1,4 @@
+
 def can_cross_chakravyuha(p, enemies, a, b):
     initial_power = p
     skips_remaining = a
